@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "advanced-langchain"
+version = "0.1.0"
+description = ""
+authors = ["thee <theekshana.sandaru@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.14"
+langchain-openai = "^1.0.3"
+langchain-ollama = "^1.0.0"
+langchain = "^1.0.8"
+black = "^25.11.0"
+isort = "^7.0.0"
+python-dotenv = "^1.2.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
