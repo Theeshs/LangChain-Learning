@@ -16,7 +16,8 @@ class Usernames(BaseModel):
     """Schema for a username of a user that identified by the agent"""
 
     username: str = Field(
-        description="username of the users who eiter a follower or following")
+        description="username of the users who eiter a follower or following"
+    )
 
 
 class AgentResponse(BaseModel):
@@ -58,13 +59,7 @@ def main(username: str):
     query = f"""Search instagram for {username} on instagram and scrape the all followers
       and followings and return their instagram username separately
       """
-    result = agent.invoke(
-        {
-            "messages": HumanMessage(
-                content=query
-            )
-        }
-    )
+    result = agent.invoke({"messages": HumanMessage(content=query)})
     print(result["structured_response"])
 
 
