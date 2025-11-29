@@ -1,0 +1,2 @@
+uv add langchain-openai langchain-ollama langchain black isort python-dotenv pydantic langchain-tavily tavily-python langchain-classic langchainhub pinecone langchain-community langchain-text-splitters langchain-qdrant pypdf faiss-cpu uvicorn
+uv add black chromadb faiss-cpu isort langchain langchain-chroma langchain-classic langchain-community langchain-ollama langchain-openai langchain-pinecone langchain-qdrant langchain-tavily langchain-text-splitters langchainhub pinecone pydantic pypdf python-dotenv tavily-python uvicorn

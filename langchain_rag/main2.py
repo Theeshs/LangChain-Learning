@@ -1,12 +1,11 @@
 from dotenv import load_dotenv
-from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from injestion import qdrant_vector_store
-
 from langchain_classic import hub
 from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 from langchain_classic.chains.retrieval import create_retrieval_chain
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 
 load_dotenv()
 
@@ -41,14 +40,14 @@ if __name__ == "__main__":
     #     retriever=qdrant_vector_store.as_retriever(), combine_docs_chain=combin_docs_chain
     # )
     rag_chain = (
-        {"context": qdrant_vector_store.as_retriever() | format_docs,
-         "question": RunnablePassthrough()}
+        {
+            "context": qdrant_vector_store.as_retriever() | format_docs,
+            "question": RunnablePassthrough(),
+        }
         | custom_rag_promt
         | llm
     )
 
-    result = rag_chain.invoke(
-        "What is Pinecone?"
-    )
+    result = rag_chain.invoke("What is Pinecone?")
 
     print(result)

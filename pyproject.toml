@@ -1,31 +1,31 @@
-[tool.poetry]
+[project]
 name = "advanced-langchain"
 version = "0.1.0"
-description = ""
-authors = ["thee <theekshana.sandaru@gmail.com>"]
+description = "Add your description here"
 readme = "README.md"
-
-[tool.poetry.dependencies]
-python = "3.14"
-langchain-openai = "^1.0.3"
-langchain-ollama = "^1.0.0"
-langchain = "^1.0.8"
-black = "^25.11.0"
-isort = "^7.0.0"
-python-dotenv = "^1.2.1"
-pydantic = "^2.12.4"
-langchain-tavily = "^0.2.13"
-tavily-python = "^0.7.13"
-langchain-classic = "^1.0.0"
-langchainhub = "^0.1.21"
-pinecone = "^8.0.0"
-langchain-community = "^0.4.1"
-langchain-text-splitters = "^1.0.0"
-langchain-qdrant = "^1.1.0"
-pypdf = "^6.4.0"
-faiss-cpu = "^1.13.0"
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires-python = ">=3.13"
+dependencies = [
+    "black>=25.11.0",
+    "chromadb>=1.3.5",
+    "faiss-cpu>=1.13.0",
+    "isort>=7.0.0",
+    "langchain>=1.1.0",
+    "langchain-chroma>=1.0.0",
+    "langchain-classic>=1.0.0",
+    "langchain-community>=0.4.1",
+    "langchain-ollama>=1.0.0",
+    "langchain-openai>=1.1.0",
+    "langchain-pinecone>=0.2.13",
+    "langchain-qdrant>=1.1.0",
+    "langchain-tavily>=0.2.13",
+    "langchain-text-splitters>=1.0.0",
+    "langchainhub>=0.1.21",
+    "pinecone>=7.3.0",
+    "pydantic>=2.12.5",
+    "pypdf>=6.4.0",
+    "python-dotenv>=1.2.1",
+    "streamlit>=1.51.0",
+    "tavily>=1.1.0",
+    "tavily-python>=0.7.13",
+    "uvicorn>=0.38.0",
+]

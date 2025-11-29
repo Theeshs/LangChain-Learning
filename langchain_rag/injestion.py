@@ -1,12 +1,11 @@
+from uuid import uuid4
 
 from dotenv import load_dotenv
 from langchain_community.document_loaders import TextLoader
-from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_openai.embeddings import OpenAIEmbeddings
 from langchain_qdrant import QdrantVectorStore
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from qdrant_client import QdrantClient
-
-from uuid import uuid4
 
 load_dotenv()
 
@@ -29,9 +28,7 @@ if __name__ == "__main__":
     document = loader.load()
 
     print("splitting")
-    text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1000, chunk_overlap=0
-    )
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
 
     chunkz = text_splitter.split_documents(document)
 
