@@ -1,11 +1,12 @@
+from typing import Any
+
 from dotenv import load_dotenv
 from langchain_classic import hub
 from langchain_classic.agents import AgentExecutor, create_react_agent
-from langchain_experimental.tools import PythonREPLTool
-from langchain_experimental.agents.agent_toolkits import create_csv_agent
-from langchain_openai import ChatOpenAI
 from langchain_core.tools import Tool
-from typing import Any
+from langchain_experimental.agents.agent_toolkits import create_csv_agent
+from langchain_experimental.tools import PythonREPLTool
+from langchain_openai import ChatOpenAI
 
 load_dotenv()
 
@@ -31,14 +32,13 @@ def main():
         tools=tools,
     )
 
-    python_agent_executor = AgentExecutor(
-        agent=python_agent, tools=tools, verbose=True)
+    python_agent_executor = AgentExecutor(agent=python_agent, tools=tools, verbose=True)
 
     csv_agent_executor: AgentExecutor = create_csv_agent(
         llm=ChatOpenAI(temperature=0, model="gpt-4"),
         path="episode_info.csv",
         verbose=True,
-        allow_dangerous_code=True
+        allow_dangerous_code=True,
     )
 
     ###### router agent #####
@@ -68,8 +68,7 @@ def main():
         llm=ChatOpenAI(temperature=0, model="gpt-4-turbo"),
         tools=tools,
     )
-    grand_agent_executor = AgentExecutor(
-        agent=grand_agent, tools=tools, verbose=True)
+    grand_agent_executor = AgentExecutor(agent=grand_agent, tools=tools, verbose=True)
 
     print(
         grand_agent_executor.invoke(
