@@ -1,9 +1,8 @@
+from answer_schema import AnswerQuestion, ReviseAnswer
 from dotenv import load_dotenv
 from langchain_core.tools import StructuredTool
 from langchain_tavily import TavilySearch
 from langgraph.prebuilt import ToolNode
-
-from answer_schema import AnswerQuestion, ReviseAnswer
 
 load_dotenv()
 
