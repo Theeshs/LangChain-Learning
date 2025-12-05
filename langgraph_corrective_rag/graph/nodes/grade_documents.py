@@ -1,8 +1,7 @@
 from typing import Any, Dict
 
 from graph.chains.retrieval_grader import retrieval_grader
-
-from langgraph_corrective_rag.graph.state import GraphState
+from graph.state import GraphState
 
 
 def grade_documents(state: GraphState) -> Dict[str, Any]:

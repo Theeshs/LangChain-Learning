@@ -1,13 +1,10 @@
-from __future__ import annotations
-
 from typing import Any, Dict
 
-from graph.state import retriver
+from graph.state import GraphState
+from injestion import retriver
 
-from langgraph_corrective_rag.graph.state import GraphState
 
-
-def retrive(state: GraphState) -> Dict[str, Any]:
+def retrieve(state: GraphState) -> Dict[str, Any]:
     print("Retrive")
     question = state["question"]
 

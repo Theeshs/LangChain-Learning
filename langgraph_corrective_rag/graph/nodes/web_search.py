@@ -1,12 +1,9 @@
-from __future__ import annotations
-
 from typing import Any, Dict
 
 from dotenv import load_dotenv
+from graph.state import GraphState
 from langchain_classic.schema import Document
 from langchain_tavily import TavilySearch
-
-from langgraph_corrective_rag.graph.state import GraphState
 
 load_dotenv()
 
@@ -18,7 +15,7 @@ def web_search(state: GraphState) -> Dict[str, Any]:
     question = state["question"]
     documents = state["documents"]
 
-    tavily_search_results = web_search_tool.invoke({"query": question})
+    tavily_search_results = web_search_tool.invoke({"query": question})["results"]
     joined_taviliy_result = "\n".join(
         [
             tavily_search_result["content"]
