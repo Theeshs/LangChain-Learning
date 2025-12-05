@@ -1,5 +1,6 @@
 import datetime
 
+from answer_schema import AnswerQuestion, ReviseAnswer
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage
 from langchain_core.output_parsers.openai_tools import (
@@ -8,8 +9,6 @@ from langchain_core.output_parsers.openai_tools import (
 )
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_openai import ChatOpenAI
-
-from answer_schema import AnswerQuestion, ReviseAnswer
 
 load_dotenv()
 

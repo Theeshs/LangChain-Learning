@@ -1,8 +1,10 @@
 from dotenv import load_dotenv
-from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_chroma import Chroma
 from langchain_community.document_loaders import WebBaseLoader
 from langchain_openai import OpenAIEmbeddings
-from langchain_chroma import Chroma
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+load_dotenv()
 
 urls = [
     "https://lilianweng.github.io/posts/2023-06-23-agent/",
@@ -29,5 +31,5 @@ doc_splits = text_spitter.split_documents(doc_list)
 retriver = Chroma(
     collection_name="rag-chroma",
     embedding_function=OpenAIEmbeddings(),
-    persist_directory="./.chroma"
+    persist_directory="./.chroma",
 ).as_retriever()
