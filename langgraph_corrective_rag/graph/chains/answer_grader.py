@@ -4,6 +4,8 @@ from langchain_core.runnables import RunnableSequence
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, Field
 
+load_dotenv()
+
 llm = ChatOpenAI(temperature=0)
 
 
