@@ -2,6 +2,10 @@ from pprint import pprint
 
 from dotenv import load_dotenv
 from graph.chains.generation import generation_chain
+from graph.chains.hallucination_grader import (
+    GradeHallucination,
+    hallusination_grader_chain,
+)
 from graph.chains.retrieval_grader import GradeDocuments, retrieval_grader
 from injestion import retriver
 
@@ -39,3 +43,27 @@ def test_generation_chain() -> None:
     generation = generation_chain.invoke({"context": docs, "question": question})
 
     pprint(generation)
+
+
+def test_hallucination_grader_anwer_yes() -> None:
+    question = "agent memory"
+    docs = retriver.invoke(question)
+    generation = generation_chain.invoke({"context": docs, "question": question})
+    res: GradeHallucination = hallusination_grader_chain.invoke(
+        {"documents": docs, "generation": generation}
+    )
+
+    assert res.binary_score
+
+
+def test_hallucination_grader_anwer_yes() -> None:
+    question = "agent memory"
+    docs = retriver.invoke(question)
+    res: GradeHallucination = hallusination_grader_chain.invoke(
+        {
+            "documents": docs,
+            "generation": "In order to make pizza we need to first start with the dough",
+        }
+    )
+
+    assert not res.binary_score
