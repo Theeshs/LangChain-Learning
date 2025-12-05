@@ -35,7 +35,8 @@ def grade_generation_grounded_in_documents_and_question(state: GraphState):
     if hallucination_grade := score.binary_score:
         print("--- Decision: Generation is grounded in documents ---")
         print("--- Grade Generation vs Question")
-        score = answer_grader.invoke({"question": question, "generation": generation})
+        score = answer_grader.invoke(
+            {"question": question, "generation": generation})
         if answer_grade := score.binary_score:
             print("---DECISION: GENERATION ADDRESSES QUESTION---")
             return "useful"
@@ -69,10 +70,10 @@ workflow.set_conditional_entry_point(
     route_question, {WEBSEARCH: WEBSEARCH, RETRIEVE: RETRIEVE}
 )
 
-workflow.set_entry_point(RETRIEVE)
 workflow.add_edge(RETRIEVE, GRADE_DOCUMENT)
 workflow.add_conditional_edges(
-    GRADE_DOCUMENT, decide_to_generate, {WEBSEARCH: WEBSEARCH, GENERATE: GENERATE}
+    GRADE_DOCUMENT, decide_to_generate, {
+        WEBSEARCH: WEBSEARCH, GENERATE: GENERATE}
 )
 
 workflow.add_conditional_edges(
